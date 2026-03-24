@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShieldGuard | ML Phishing Detection</title>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Premium background elements -->
+    <div class="background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header slide-down">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>Shield<span>Guard</span></h1>
+            </div>
+            <p class="subtitle">Optimised Malicious URL Detection</p>
+        </header>
+
+        <!-- Main Search Section -->
+        <main class="scanner-section slide-up">
+            <div class="glass-panel search-panel">
+                <h2>Analyze a URL</h2>
+                <p>Detect phishing, malware, and defacement using our ensemble ML models.</p>
+
+                <form id="scan-form" class="scan-form">
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </div>
+                        <input type="url" id="url-input" placeholder="https://example.com/login" required
+                            autocomplete="off" spellcheck="false">
+                        <button type="submit" id="scan-btn" class="btn-primary">
+                            <span class="btn-text">Scan Now</span>
+                            <div class="loader hidden"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Section (Hidden initially) -->
+            <section id="results" class="results-section hidden">
+                <div class="glass-panel result-card">
+                    <!-- Top Level Verdict -->
+                    <div class="verdict-header">
+                        <div id="status-icon" class="status-icon pulse-animation">
+                            <!-- Icon injected via JS -->
+                        </div>
+                        <div class="verdict-text">
+                            <h2 id="final-verdict">Safe</h2>
+                            <p id="analyzed-url" class="truncate-text">https://example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Ensemble Metrics -->
+                    <div class="metrics-container">
+                        <div class="metric-row main-metric">
+                            <div class="metric-info">
+                                <h3>Ensemble Risk Score</h3>
+                                <p>Combined CNN & XGBoost Prediction</p>
+                            </div>
+                            <div class="score-display">
+                                <span id="ensemble-score-text" class="score-percentage">0%</span>
+                            </div>
+                        </div>
+                        <div class="progress-track">
+                            <div id="ensemble-bar" class="progress-fill"></div>
+                        </div>
+
+                        <!-- Individual Model Breakdown -->
+                        <div class="model-breakdown">
+                            <div class="model-card">
+                                <h4>XGBoost</h4>
+                                <div class="mini-progress-track">
+                                    <div id="xgb-bar" class="mini-progress-fill"></div>
+                                </div>
+                                <span id="xgb-score-text" class="mini-score">0%</span>
+                            </div>
+
+                            <div class="model-card">
+                                <h4>Deep CNN</h4>
+                                <div class="mini-progress-track">
+                                    <div id="cnn-bar" class="mini-progress-fill"></div>
+                                </div>
+                                <span id="cnn-score-text" class="mini-score">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="system-note" class="system-note hidden"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer fade-in">
+            <p>Powered by XGBoost & CNN.</p>
+        </footer>
+    </div>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
